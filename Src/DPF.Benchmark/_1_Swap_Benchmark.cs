@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using BenchmarkDotNet.Attributes;
-using DPF;
 
-namespace DFS.Benchmark
+namespace DPF.Benchmark
 {
+    [MarkdownExporter]
     [DisassemblyDiagnoser(printAsm: true)]
     public class _1_Swap_Benchmark
     {

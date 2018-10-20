@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
-using DPF;
 using FluentAssertions;
 using Xunit;
 
-namespace DFS.Tests
+namespace DPF.Tests
 {
     public class SwapTests
     {

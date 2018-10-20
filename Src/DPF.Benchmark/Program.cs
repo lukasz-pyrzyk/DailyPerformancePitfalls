@@ -1,7 +1,6 @@
-﻿using System;
-using BenchmarkDotNet.Running;
+﻿using BenchmarkDotNet.Running;
 
-namespace DFS.Benchmark
+namespace DPF.Benchmark
 {
     class Program
     {
