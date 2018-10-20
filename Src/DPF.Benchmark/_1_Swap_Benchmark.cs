@@ -3,7 +3,7 @@ using BenchmarkDotNet.Attributes;
 
 namespace DPF.Benchmark
 {
-    [MarkdownExporter]
+    [Config(typeof(DFSConfig))]
     [DisassemblyDiagnoser(printAsm: true)]
     public class _1_Swap_Benchmark
     {
