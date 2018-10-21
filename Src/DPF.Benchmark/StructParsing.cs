@@ -22,20 +22,22 @@ namespace DPF.Benchmark
             public uint Checksum;
         }
 
-        private byte[] _bytes;
+        public byte[] Bytes;
+
+        public TcpHeader Header = new TcpHeader
+        {
+            Source = 444444444,
+            Destination = 555555555,
+            SourcePort = 5000,
+            DestinationPort = 5000,
+            Flags = 64,
+            Checksum = 12345679,
+        };
 
         [GlobalSetup]
         public void Setup()
         {
-            _bytes = Serialize(new TcpHeader
-            {
-                Source = 444444444,
-                Destination = 555555555,
-                SourcePort = 5000,
-                DestinationPort = 5000,
-                Flags = 64,
-                Checksum = 12345679,
-            });
+            Bytes = Serialize(Header);
         }
 
         [Benchmark]
@@ -48,17 +50,17 @@ namespace DPF.Benchmark
             {
                 if (field.FieldType == typeof(uint))
                 {
-                    field.SetValue(data, BitConverter.ToUInt32(_bytes, offset));
+                    field.SetValue(data, BitConverter.ToUInt32(Bytes, offset));
                     offset += 4;
                 }
                 if (field.FieldType == typeof(ushort))
                 {
-                    field.SetValue(data, BitConverter.ToUInt16(_bytes, offset));
+                    field.SetValue(data, BitConverter.ToUInt16(Bytes, offset));
                     offset += 2;
                 }
             }
 
-            return (TcpHeader) data;
+            return (TcpHeader)data;
         }
 
         [Benchmark]
@@ -67,31 +69,68 @@ namespace DPF.Benchmark
             int offset = 0;
             var data = new TcpHeader();
 
-            data.Source = BitConverter.ToUInt32(_bytes, offset);
+            data.Source = BitConverter.ToUInt32(Bytes, offset);
             offset += 4;
 
-            data.Destination = BitConverter.ToUInt32(_bytes, offset);
+            data.Destination = BitConverter.ToUInt32(Bytes, offset);
             offset += 4;
 
-            data.SourcePort = BitConverter.ToUInt16(_bytes, offset);
+            data.SourcePort = BitConverter.ToUInt16(Bytes, offset);
             offset += 2;
 
-            data.DestinationPort = BitConverter.ToUInt16(_bytes, offset);
+            data.DestinationPort = BitConverter.ToUInt16(Bytes, offset);
             offset += 2;
 
-            data.Flags = BitConverter.ToUInt32(_bytes, offset);
+            data.Flags = BitConverter.ToUInt32(Bytes, offset);
             offset += 4;
 
-            data.Checksum = BitConverter.ToUInt32(_bytes, offset);
+            data.Checksum = BitConverter.ToUInt32(Bytes, offset);
             offset += 4;
 
             return data;
         }
 
         [Benchmark]
+        public TcpHeader ManualWithUnsafe()
+        {
+            int offset = 0;
+            var data = new TcpHeader();
+
+            data.Source = ToUInt32(Bytes, ref offset);
+            data.Destination = ToUInt32(Bytes, ref offset);
+            data.SourcePort = ToUInt16(Bytes, ref offset);
+            data.DestinationPort = ToUInt16(Bytes, ref offset);
+            data.Flags = ToUInt32(Bytes, ref offset);
+            data.Checksum = ToUInt32(Bytes, ref offset);
+
+            return data;
+        }
+
+
+        private static unsafe ushort ToUInt16(byte[] bytes, ref int offset)
+        {
+            fixed (byte* ptr = &bytes[offset])
+            {
+                offset += sizeof(ushort);
+                ushort* primitivePtr = (ushort*)ptr;
+                return *primitivePtr;
+            }
+        }
+
+        private static unsafe uint ToUInt32(byte[] bytes, ref int offset)
+        {
+            fixed (byte* ptr = &bytes[offset])
+            {
+                offset += sizeof(uint);
+                uint* primitivePtr = (uint*)ptr;
+                return *primitivePtr;
+            }
+        }
+
+        [Benchmark]
         public TcpHeader PtrToStructure_GCHandle()
         {
-            var handle = GCHandle.Alloc(_bytes, GCHandleType.Pinned);
+            var handle = GCHandle.Alloc(Bytes, GCHandleType.Pinned);
             try
             {
                 IntPtr ptr = handle.AddrOfPinnedObject();
@@ -106,7 +145,7 @@ namespace DPF.Benchmark
         [Benchmark]
         public unsafe TcpHeader PtrToStructure_Fixed()
         {
-            fixed (byte* ptr = &_bytes[0])
+            fixed (byte* ptr = &Bytes[0])
             {
                 return Marshal.PtrToStructure<TcpHeader>(new IntPtr(ptr));
             }
@@ -115,7 +154,7 @@ namespace DPF.Benchmark
         [Benchmark]
         public unsafe TcpHeader Pointer()
         {
-            fixed (byte* ptr = &_bytes[0])
+            fixed (byte* ptr = &Bytes[0])
             {
                 TcpHeader* tcpHeaderPtr = (TcpHeader*)ptr;
                 return *tcpHeaderPtr;
