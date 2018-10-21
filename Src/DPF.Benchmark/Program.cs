@@ -8,7 +8,7 @@ namespace DPF.Benchmark
         {
             BenchmarkSwitcher.FromTypes(new[]
             {
-                typeof(Swap_Benchmark),
+                typeof(SwappingBenchmark),
                 typeof(CountingEvenNumbers),
             });
         }

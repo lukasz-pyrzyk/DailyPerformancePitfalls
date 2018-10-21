@@ -5,10 +5,6 @@ VisualStudioVersion = 15.0.28010.2046
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DPF.Benchmark", "Src\DPF.Benchmark\DPF.Benchmark.csproj", "{89A0212A-1F1F-4E60-AED2-834020B86C9A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DPF", "Src\DPF\DPF.csproj", "{D70B1FD4-F5F4-4C99-9D63-F5DEC4B9B6B7}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DPF.Tests", "Tests\DPF.Tests\DPF.Tests.csproj", "{C07F0A5C-4983-4997-9002-D5B6927C9E7A}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C14BC171-20F0-453B-9EBB-19915DEF2174}"
 	ProjectSection(SolutionItems) = preProject
 		readme.md = readme.md
@@ -24,14 +20,6 @@ Global
 		{89A0212A-1F1F-4E60-AED2-834020B86C9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89A0212A-1F1F-4E60-AED2-834020B86C9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{89A0212A-1F1F-4E60-AED2-834020B86C9A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D70B1FD4-F5F4-4C99-9D63-F5DEC4B9B6B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D70B1FD4-F5F4-4C99-9D63-F5DEC4B9B6B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D70B1FD4-F5F4-4C99-9D63-F5DEC4B9B6B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D70B1FD4-F5F4-4C99-9D63-F5DEC4B9B6B7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C07F0A5C-4983-4997-9002-D5B6927C9E7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C07F0A5C-4983-4997-9002-D5B6927C9E7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C07F0A5C-4983-4997-9002-D5B6927C9E7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C07F0A5C-4983-4997-9002-D5B6927C9E7A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
