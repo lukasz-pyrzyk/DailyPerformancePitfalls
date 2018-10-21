@@ -8,8 +8,11 @@ namespace DPF.Benchmark
         {
             BenchmarkSwitcher.FromTypes(new[]
             {
-                typeof(SwappingBenchmark),
+                typeof(Swapping),
                 typeof(CountingEvenNumbers),
+                typeof(StructParsing),
+                typeof(Inlining),
+                typeof(FibonacciCalc),
             }).Run(args);
         }
     }

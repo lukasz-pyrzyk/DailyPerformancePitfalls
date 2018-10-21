@@ -1,13 +1,15 @@
 ﻿using BenchmarkDotNet.Configs;
+using BenchmarkDotNet.Diagnosers;
 using BenchmarkDotNet.Exporters;
 
 namespace DPF.Benchmark
 {
-    public class DFSConfig : ManualConfig
+    public class DPFConfig : ManualConfig
     {
-        public DFSConfig()
+        public DPFConfig()
         {
             Add(MarkdownExporter.GitHub);
+            Add(MemoryDiagnoser.Default);
         }
     }
 }

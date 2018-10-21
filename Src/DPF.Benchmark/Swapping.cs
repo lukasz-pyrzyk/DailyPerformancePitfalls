@@ -3,9 +3,9 @@ using BenchmarkDotNet.Attributes;
 
 namespace DPF.Benchmark
 {
-    [Config(typeof(DFSConfig))]
+    [Config(typeof(DPFConfig))]
     [DisassemblyDiagnoser(printAsm: true)]
-    public class SwappingBenchmark
+    public class Swapping
     {
         [Benchmark(Baseline = true)]
         [ArgumentsSource(nameof(Data))]
