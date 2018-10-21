@@ -58,7 +58,7 @@ namespace DPF.Benchmark
             return results[n - 1];
         }
 
-        [Benchmark]
+        [Benchmark(Baseline = true)]
         [ArgumentsSource(nameof(Data))]
         public ulong Iterative(ulong n)
         {
@@ -77,6 +77,7 @@ namespace DPF.Benchmark
 
         public IEnumerable<ulong> Data()
         {
+            yield return 15;
             yield return 35;
         }
     }
