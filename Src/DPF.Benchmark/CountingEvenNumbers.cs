@@ -8,7 +8,7 @@ using BenchmarkDotNet.Diagnosers;
 namespace DPF.Benchmark
 {
     [Config(typeof(DFSConfig))]
-    [HardwareCounters(HardwareCounter.BranchMispredictions, HardwareCounter.CacheMisses)]
+    [HardwareCounters(HardwareCounter.BranchMispredictions)]
     [DisassemblyDiagnoser(printAsm: true)]
     public class CountingEvenNumbers
     {
