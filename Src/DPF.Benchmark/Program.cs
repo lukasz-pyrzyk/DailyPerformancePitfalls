@@ -12,6 +12,7 @@ namespace DPF.Benchmark
                 typeof(CountingEvenNumbers),
                 typeof(StructParsing),
                 typeof(Inlining),
+                typeof(FibonacciCalc),
             }).Run(args);
         }
     }
