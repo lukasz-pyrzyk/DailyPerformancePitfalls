@@ -1,12 +1,26 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Threading.Tasks;
+using DPF.WebApi.Models;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace DPF.WebApi.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        private readonly ApiClient _apiClient;
+
+        public HomeController(ApiClient apiClient)
         {
-            return Content("Hello world");
+            _apiClient = apiClient;
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            var request = _apiClient.CreateUrl();
+            var json = await _apiClient.Client.GetStringAsync(request);
+
+            var response = JsonConvert.DeserializeObject<RootObject>(json);
+            return Json(response);
         }
     }
 }
