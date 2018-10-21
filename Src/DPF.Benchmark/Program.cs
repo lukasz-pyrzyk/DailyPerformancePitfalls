@@ -6,7 +6,11 @@ namespace DPF.Benchmark
     {
         static void Main(string[] args)
         {
-            BenchmarkRunner.Run<_1_Swap_Benchmark>();
+            BenchmarkSwitcher.FromTypes(new[]
+            {
+                typeof(SwappingBenchmark),
+                typeof(CountingEvenNumbers),
+            }).Run(args);
         }
     }
 }
