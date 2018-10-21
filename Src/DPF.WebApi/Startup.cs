@@ -1,4 +1,4 @@
-﻿using System;
+﻿using DPF.WebApi.BankApi;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -18,10 +18,7 @@ namespace DPF.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddHttpClient<ApiClient>(client =>
-            {
-                client.BaseAddress = new Uri("http://www.vizgr.org");
-            });
+            services.AddHttpClient<ApiClient>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using DPF.WebApi.Models;
+using DPF.WebApi.BankApi;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -14,12 +14,13 @@ namespace DPF.WebApi.Controllers
             _apiClient = apiClient;
         }
 
+        [Route("slow")]
         public async Task<IActionResult> Index()
         {
-            var request = _apiClient.CreateUrl();
-            var json = await _apiClient.Client.GetStringAsync(request);
+            var url = _apiClient.CreateUrl();
+            var json = await _apiClient.Client.GetStringAsync(url);
 
-            var response = JsonConvert.DeserializeObject<RootObject>(json);
+            var response = JsonConvert.DeserializeObject<Bond[]>(json);
             return Json(response);
         }
     }
