@@ -45,3 +45,14 @@ Frequency=2648436 Hz, Resolution=377.5813 ns, Timer=TSC
 |               For |  15.163 ms | 0.0543 ms | 0.0508 ms |  1.00 |    0.00 |                   1,227 |
 |  PLINQ_AsParallel |  36.869 ms | 0.2220 ms | 0.2076 ms |  2.43 |    0.02 |                 102,521 |
 |   ParallelForEach | 164.636 ms | 3.2173 ms | 4.4039 ms | 10.76 |    0.36 |                  65,087 |
+
+### 3. Structure parsing
+
+|                  Method |       Mean |      Error |    StdDev | Gen 0/1k Op | Gen 1/1k Op | Gen 2/1k Op | Allocated Memory/Op |
+|------------------------ |-----------:|-----------:|----------:|------------:|------------:|------------:|--------------------:|
+|                 Pointer |   1.063 ns |  0.0305 ns | 0.0285 ns |           - |           - |           - |                   - |
+|        ManualWithUnsafe |  21.815 ns |  0.2084 ns | 0.1949 ns |           - |           - |           - |                   - |
+|                  Manual |  23.029 ns |  0.3171 ns | 0.2966 ns |           - |           - |           - |                   - |
+|    PtrToStructure_Fixed | 192.979 ns |  2.1008 ns | 1.9651 ns |      0.0253 |           - |           - |                40 B |
+| PtrToStructure_GCHandle | 276.896 ns |  2.5303 ns | 2.3668 ns |      0.0253 |           - |           - |                40 B |
+|              Reflection | 878.013 ns | 10.2428 ns | 9.5811 ns |      0.1621 |           - |           - |               256 B |
