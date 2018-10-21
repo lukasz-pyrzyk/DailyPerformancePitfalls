@@ -113,12 +113,6 @@ namespace DPF.Benchmark
         }
 
         [Benchmark]
-        public TcpHeader MemoryMarshalRead()
-        {
-            return MemoryMarshal.Read<TcpHeader>(_bytes);
-        }
-
-        [Benchmark]
         public unsafe TcpHeader Pointer()
         {
             fixed (byte* ptr = &_bytes[0])
