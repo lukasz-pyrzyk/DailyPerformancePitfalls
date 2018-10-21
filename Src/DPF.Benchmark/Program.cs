@@ -11,6 +11,7 @@ namespace DPF.Benchmark
                 typeof(Swapping),
                 typeof(CountingEvenNumbers),
                 typeof(StructParsing),
+                typeof(Inlining),
             }).Run(args);
         }
     }

@@ -15,29 +15,6 @@ Frequency=2648436 Hz, Resolution=377.5813 ns, Timer=TSC
 |    Swap | 0 | 1 | 0.0006 ns | 0.0021 ns | 0.0020 ns | 0.0000 ns |     ? |       ? |
 | SwapXOR | 0 | 1 | 3.0023 ns | 0.0247 ns | 0.0231 ns | 2.9905 ns |     ? |       ? |
 
-
-```assembly
-; DPF.Benchmark.SwappingBenchmark.Swap(Int32 ByRef, Int32 ByRef)
-       mov     eax,dword ptr [rdx]
-       mov     ecx,dword ptr [r8]
-       mov     dword ptr [rdx],ecx
-       mov     dword ptr [r8],eax
-       ret
-; Total bytes of code 11
-```
-
-```assembly
-; DPF.Benchmark.SwappingBenchmark.SwapXOR(Int32 ByRef, Int32 ByRef)
-       mov     eax,dword ptr [r8]
-       xor     dword ptr [rdx],eax
-       mov     eax,dword ptr [rdx]
-       xor     dword ptr [r8],eax
-       mov     eax,dword ptr [r8]
-       xor     dword ptr [rdx],eax
-       ret
-; Total bytes of code 16
-```
-
 ### 2. Counting even numbers
 |            Method |       Mean |     Error |    StdDev | Ratio | RatioSD | BranchMispredictions/Op |
 |------------------ |-----------:|----------:|----------:|------:|--------:|------------------------:|
@@ -56,3 +33,11 @@ Frequency=2648436 Hz, Resolution=377.5813 ns, Timer=TSC
 |    PtrToStructure_Fixed | 192.979 ns |  2.1008 ns | 1.9651 ns |      0.0253 |           - |           - |                40 B |
 | PtrToStructure_GCHandle | 276.896 ns |  2.5303 ns | 2.3668 ns |      0.0253 |           - |           - |                40 B |
 |              Reflection | 878.013 ns | 10.2428 ns | 9.5811 ns |      0.1621 |           - |           - |               256 B |
+
+### 4. Inlining
+|                    Method | a | b |      Mean |     Error |    StdDev | Gen 0/1k Op | Gen 1/1k Op | Gen 2/1k Op | Allocated Memory/Op |
+|-------------------------- |-- |-- |----------:|----------:|----------:|------------:|------------:|------------:|--------------------:|
+|                    Divide | 0 | 1 | 0.0000 ns | 0.0000 ns | 0.0000 ns |           - |           - |           - |                   - |
+|             DivideVirtual | 0 | 1 | 0.6666 ns | 0.0335 ns | 0.0297 ns |           - |           - |           - |                   - |
+|       DivideWithException | 0 | 1 | 1.2798 ns | 0.0295 ns | 0.0276 ns |           - |           - |           - |                   - |
+| DivideWithExceptionHelper | 0 | 1 | 0.9894 ns | 0.0475 ns | 0.0421 ns |           - |           - |           - |                   - |
