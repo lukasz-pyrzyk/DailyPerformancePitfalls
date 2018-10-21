@@ -1,8 +1,8 @@
 ﻿namespace DPF
 {
-    public static class _1_Swap
+    public static class Swap
     {
-        public static void Swap(ref int x, ref int y)
+        public static void SwapWithTemp(ref int x, ref int y)
         {
             int temp = x;
             x = y;

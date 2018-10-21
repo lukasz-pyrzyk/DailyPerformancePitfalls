@@ -10,7 +10,7 @@ namespace DPF.Tests
         [MemberData(nameof(Samples))]
         public void Swaps(int x, int y, int expectedX, int expectedY)
         {
-            _1_Swap.Swap(ref x, ref y);
+            Swap.SwapWithTemp(ref x, ref y);
 
             x.Should().Be(expectedX);
             y.Should().Be(expectedY);
@@ -20,7 +20,7 @@ namespace DPF.Tests
         [MemberData(nameof(Samples))]
         public void SwapXOR(int x, int y, int expectedX, int expectedY)
         {
-            _1_Swap.SwapXOR(ref x, ref y);
+            Swap.SwapXOR(ref x, ref y);
 
             x.Should().Be(expectedX);
             y.Should().Be(expectedY);
