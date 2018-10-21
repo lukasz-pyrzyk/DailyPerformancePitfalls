@@ -10,7 +10,7 @@ namespace DPF.Benchmark
             {
                 typeof(SwappingBenchmark),
                 typeof(CountingEvenNumbers),
-            });
+            }).Run(args);
         }
     }
 }
