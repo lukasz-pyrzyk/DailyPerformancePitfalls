@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using DPF.WebApp.Clients;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DPF.WebApp
+namespace DPF.WebApp.Controllers
 {
     [Route("download/dotnet")]
     [ApiController]
