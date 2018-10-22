@@ -6,13 +6,13 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DPF.WebApp.Controllers
 {
-    [Route("download/dotnet")]
+    [Route("[controller]")]
     [ApiController]
-    public class DotnetDownloadController : Controller
+    public class DownloadController : Controller
     {
         private readonly StreamingClient _client;
 
-        public DotnetDownloadController(StreamingClient client)
+        public DownloadController(StreamingClient client)
         {
             _client = client;
         }

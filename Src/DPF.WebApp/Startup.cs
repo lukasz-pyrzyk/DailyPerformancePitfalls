@@ -1,5 +1,5 @@
 ﻿using System;
-using DPF.WebApp.Clients;
+using DPF.WebApp.Db;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -20,11 +20,18 @@ namespace DPF.WebApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-            services.AddHttpClient<StreamingClient>(x =>
+            var dbOptions = new DataStorageServiceOptions
             {
-                x.BaseAddress = new Uri("https://codeload.github.com/");
-            });
+                CollectionName = "entries",
+                DatabaseName = "telemetry",
+                ApiKey = Environment.GetEnvironmentVariable("dpf.apikey"),
+                Endpoint = new Uri(Environment.GetEnvironmentVariable("dpf.endpoint"))
+            };
+
+            services.AddSingleton(dbOptions);
+            services.AddTransient<DataStorageService>();
+
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
