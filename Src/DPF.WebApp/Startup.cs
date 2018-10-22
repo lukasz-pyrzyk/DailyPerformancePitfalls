@@ -24,8 +24,8 @@ namespace DPF.WebApp
             {
                 CollectionName = "entries",
                 DatabaseName = "telemetry",
-                ApiKey = Environment.GetEnvironmentVariable("dpf.apikey"),
-                Endpoint = new Uri(Environment.GetEnvironmentVariable("dpf.endpoint"))
+                ApiKey = Environment.GetEnvironmentVariable("dpfapikey"),
+                Endpoint = new Uri(Environment.GetEnvironmentVariable("dpfurl"))
             };
 
             services.AddSingleton(dbOptions);
