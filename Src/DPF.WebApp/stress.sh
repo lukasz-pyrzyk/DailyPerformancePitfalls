@@ -1,0 +1,1 @@
+ wrk -t1 -c10 -d30s http://localhost:5000/download/dotnet/no-buffering
