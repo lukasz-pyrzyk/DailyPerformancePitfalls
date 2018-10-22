@@ -1,4 +1,5 @@
-﻿using System.Net.Http;
+﻿using System.IO;
+using System.Net.Http;
 using System.Threading.Tasks;
 using DPF.WebApp.Clients;
 using Microsoft.AspNetCore.Mvc;
@@ -7,11 +8,11 @@ namespace DPF.WebApp
 {
     [Route("download/dotnet")]
     [ApiController]
-    public class DotnetDownload : Controller
+    public class DotnetDownloadController : Controller
     {
         private readonly StreamingClient _client;
 
-        public DotnetDownload(StreamingClient client)
+        public DotnetDownloadController(StreamingClient client)
         {
             _client = client;
         }
@@ -19,20 +20,18 @@ namespace DPF.WebApp
         [HttpGet("buffering")]
         public async Task<IActionResult> WithBuffering()
         {
-            await Task.Delay(1);
             var request = new HttpRequestMessage(HttpMethod.Get, "dotnet/corefx/zip/v2.2.0-preview3");
 
             var response = await _client.Client.SendAsync(request);
 
-                var stream = await response.Content.ReadAsStreamAsync();
-                var contentType = response.Content.Headers.ContentType.MediaType;
-                return new FileStreamResult(stream, contentType);
+            var stream = await response.Content.ReadAsStreamAsync();
+            var contentType = response.Content.Headers.ContentType.MediaType;
+            return new FileStreamResult(stream, contentType);
         }
 
         [HttpGet("no-buffering")]
         public async Task<IActionResult> WithoutBuffering()
         {
-            await Task.Delay(1);
             var request = new HttpRequestMessage(HttpMethod.Get, "dotnet/corefx/zip/v2.2.0-preview3");
 
             var response = await _client.Client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead);
@@ -42,10 +41,19 @@ namespace DPF.WebApp
             return new FileStreamResult(stream, contentType);
         }
 
+        [HttpGet("stream")]
+        public async Task<Stream> Stream()
+        {
+            var request = new HttpRequestMessage(HttpMethod.Get, "dotnet/corefx/zip/v2.2.0-preview3");
+
+            var response = await _client.Client.GetStreamAsync(request.RequestUri);
+            return response;
+        }
+
+
         [HttpGet("no-buffering-with-size")]
         public async Task<IActionResult> WithoutBufferingWithSize()
         {
-            await Task.Delay(1);
             var request = new HttpRequestMessage(HttpMethod.Get, "dotnet/corefx/zip/v2.2.0-preview3");
 
             var response = await _client.Client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead);
