@@ -18,7 +18,7 @@ namespace DPF.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddHttpClient<ApiClient>();
+            services.AddHttpClient<BondApi>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

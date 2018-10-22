@@ -7,9 +7,9 @@ namespace DPF.WebApi.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ApiClient _apiClient;
+        private readonly BondApi _apiClient;
 
-        public HomeController(ApiClient apiClient)
+        public HomeController(BondApi apiClient)
         {
             _apiClient = apiClient;
         }
