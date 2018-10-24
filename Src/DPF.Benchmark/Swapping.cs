@@ -16,6 +16,15 @@ namespace DPF.Benchmark
             y = temp;
         }
 
+        [Benchmark(Baseline = true)]
+        [ArgumentsSource(nameof(Data))]
+        public void AddAndSubtract(ref int x, ref int y)
+        {
+            x = x + y;
+            y = x - y;
+            x = x - y;
+        }
+
         [Benchmark]
         [ArgumentsSource(nameof(Data))]
         public void SwapXOR(ref int x, ref int y)
