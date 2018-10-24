@@ -16,7 +16,7 @@ namespace DPF.Benchmark
             y = temp;
         }
 
-        [Benchmark(Baseline = true)]
+        [Benchmark]
         [ArgumentsSource(nameof(Data))]
         public void AddAndSubtract(ref int x, ref int y)
         {
