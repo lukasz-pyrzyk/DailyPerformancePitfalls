@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using AutoFixture;
 using DPF.WebApp.Db;
 using DPF.WebApp.Models;
@@ -11,8 +12,6 @@ namespace DPF.WebApp.Controllers
     [ApiController]
     public class TelemetryController : Controller
     {
-        private readonly Fixture _fixture = new Fixture();
-
         [HttpGet("insert/fast")]
         public async Task<IActionResult> InsertFast([FromServices] DataStorageService db)
         {
@@ -33,9 +32,12 @@ namespace DPF.WebApp.Controllers
 
         private TelemetryEntry CreateEntry()
         {
-            return _fixture.Build<TelemetryEntry>()
-                .With(x => x.TimeToLive, 1)
-                .Create();
+            return new TelemetryEntry
+            {
+                Timestamp = DateTimeOffset.MaxValue,
+                TimeToLive = 1,
+                UserId = 1,
+            };
         }
     }
 }
