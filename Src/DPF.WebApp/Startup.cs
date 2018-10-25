@@ -29,7 +29,8 @@ namespace DPF.WebApp
             };
 
             services.AddSingleton(dbOptions);
-            services.AddTransient<DataStorageService>();
+            services.AddSingleton<DataStorageService>();
+            services.AddTransient<SlowDataStorageService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

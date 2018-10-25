@@ -11,19 +11,22 @@ namespace DPF.WebApp.Controllers
     [ApiController]
     public class TelemetryController : Controller
     {
-        private readonly DataStorageService _db;
         private readonly Fixture _fixture = new Fixture();
 
-        public TelemetryController(DataStorageService db)
-        {
-            _db = db;
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> Insert()
+        [HttpGet("insert/fast")]
+        public async Task<IActionResult> InsertFast([FromServices] DataStorageService db)
         {
             var family = _fixture.Create<TelemetryEntry>();
-            await _db.InsertFamily(family);
+            await db.InsertFamily(family);
+
+            return NoContent();
+        }
+
+        [HttpGet("insert/slow")]
+        public async Task<IActionResult> InsertSlow([FromServices] SlowDataStorageService db)
+        {
+            var family = _fixture.Create<TelemetryEntry>();
+            await db.InsertFamily(family);
 
             return NoContent();
         }
