@@ -16,8 +16,8 @@ namespace DPF.WebApp.Controllers
         [HttpGet("insert/fast")]
         public async Task<IActionResult> InsertFast([FromServices] DataStorageService db)
         {
-            var family = _fixture.Create<TelemetryEntry>();
-            await db.InsertFamily(family);
+            var entry = CreateEntry();
+            await db.InsertFamily(entry);
 
             return NoContent();
         }
@@ -25,10 +25,17 @@ namespace DPF.WebApp.Controllers
         [HttpGet("insert/slow")]
         public async Task<IActionResult> InsertSlow([FromServices] SlowDataStorageService db)
         {
-            var family = _fixture.Create<TelemetryEntry>();
-            await db.InsertFamily(family);
+            var entry = CreateEntry();
+            await db.InsertFamily(entry);
 
             return NoContent();
+        }
+
+        private TelemetryEntry CreateEntry()
+        {
+            return _fixture.Build<TelemetryEntry>()
+                .With(x => x.TimeToLive, 1)
+                .Create();
         }
     }
 }
