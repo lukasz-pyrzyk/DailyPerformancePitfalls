@@ -9,7 +9,7 @@ namespace DPF.Benchmark
     {
         [Benchmark(Baseline = true)]
         [ArgumentsSource(nameof(Data))]
-        public void Swap(ref int x, ref int y)
+        public void TempVariable(ref int x, ref int y)
         {
             int temp = x;
             x = y;
@@ -27,7 +27,7 @@ namespace DPF.Benchmark
 
         [Benchmark]
         [ArgumentsSource(nameof(Data))]
-        public void SwapXOR(ref int x, ref int y)
+        public void XOR(ref int x, ref int y)
         {
             x = x ^ y;
             y = x ^ y;

@@ -11,9 +11,9 @@ namespace DPF.Tests
 
         [Theory]
         [MemberData(nameof(Data))]
-        public void Swap(int x, int y, int expectedX, int expectedY)
+        public void TempVariable(int x, int y, int expectedX, int expectedY)
         {
-            _benchmark.Swap(ref x, ref y);
+            _benchmark.TempVariable(ref x, ref y);
             x.Should().Be(expectedX);
             y.Should().Be(expectedY);
         }
@@ -31,7 +31,7 @@ namespace DPF.Tests
         [MemberData(nameof(Data))]
         public void XOR(int x, int y, int expectedX, int expectedY)
         {
-            _benchmark.SwapXOR(ref x, ref y);
+            _benchmark.XOR(ref x, ref y);
             x.Should().Be(expectedX);
             y.Should().Be(expectedY);
         }
