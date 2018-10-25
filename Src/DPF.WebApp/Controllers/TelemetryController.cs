@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Threading.Tasks;
-using AutoFixture;
 using DPF.WebApp.Db;
 using DPF.WebApp.Models;
 using Microsoft.AspNetCore.Mvc;
