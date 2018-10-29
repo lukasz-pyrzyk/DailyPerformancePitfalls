@@ -29,6 +29,16 @@ namespace DPF.WebApp.Controllers
             return NoContent();
         }
 
+
+        [HttpGet("insert/tcp")]
+        public async Task<IActionResult> InsertTcp([FromServices] DataStorageServiceWithTcp db)
+        {
+            var entry = CreateEntry();
+            await db.Insert(entry);
+
+            return NoContent();
+        }
+
         private TelemetryEntry CreateEntry()
         {
             return new TelemetryEntry

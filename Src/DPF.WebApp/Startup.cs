@@ -30,6 +30,7 @@ namespace DPF.WebApp
 
             services.AddSingleton(dbOptions);
             services.AddSingleton<DataStorageService>();
+            services.AddSingleton<DataStorageServiceWithTcp>();
             services.AddTransient<SlowDataStorageService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
