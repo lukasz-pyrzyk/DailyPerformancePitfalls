@@ -23,7 +23,7 @@ namespace DPF.WebApp.Db
                 .GetAwaiter().GetResult();
         }
 
-        public async Task InsertFamily(TelemetryEntry telemetryEntry)
+        public async Task Insert(TelemetryEntry telemetryEntry)
         {
             var collectionUri = UriFactory.CreateDocumentCollectionUri(_options.DatabaseName, _options.CollectionName);
             await _client.CreateDocumentAsync(collectionUri, telemetryEntry);
@@ -41,17 +41,15 @@ namespace DPF.WebApp.Db
             _clientFactory = new AsyncLazy<DocumentClient>(async () =>
             {
                 var client = new DocumentClient(options.Endpoint, options.ApiKey);
-
                 await client.CreateDatabaseIfNotExistsAsync(new Database { Id = options.DatabaseName });
                 await client.CreateDocumentCollectionIfNotExistsAsync(
                     UriFactory.CreateDatabaseUri(options.DatabaseName),
                     new DocumentCollection { Id = options.CollectionName });
-
                 return client;
             });
         }
 
-        public async Task InsertFamily(TelemetryEntry telemetryEntry)
+        public async Task Insert(TelemetryEntry telemetryEntry)
         {
             var client = await _clientFactory.Value;
             await client.CreateDocumentAsync(_collectionUri, telemetryEntry);

@@ -15,7 +15,7 @@ namespace DPF.WebApp.Controllers
         public async Task<IActionResult> InsertFast([FromServices] DataStorageService db)
         {
             var entry = CreateEntry();
-            await db.InsertFamily(entry);
+            await db.Insert(entry);
 
             return NoContent();
         }
@@ -24,7 +24,7 @@ namespace DPF.WebApp.Controllers
         public async Task<IActionResult> InsertSlow([FromServices] SlowDataStorageService db)
         {
             var entry = CreateEntry();
-            await db.InsertFamily(entry);
+            await db.Insert(entry);
 
             return NoContent();
         }
