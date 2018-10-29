@@ -56,6 +56,38 @@ namespace DPF.WebApp.Db
         }
     }
 
+    public class DataStorageServiceWithTcp
+    {
+        private readonly AsyncLazy<DocumentClient> _clientFactory;
+        private readonly Uri _collectionUri;
+
+        public DataStorageServiceWithTcp(DataStorageServiceOptions options)
+        {
+            _collectionUri = UriFactory.CreateDocumentCollectionUri(options.DatabaseName, options.CollectionName);
+            _clientFactory = new AsyncLazy<DocumentClient>(async () =>
+            {
+                var client = new DocumentClient(options.Endpoint, options.ApiKey, new ConnectionPolicy
+                {
+                    ConnectionMode = ConnectionMode.Direct,
+                    ConnectionProtocol = Protocol.Tcp
+                });
+
+                await client.CreateDatabaseIfNotExistsAsync(new Database { Id = options.DatabaseName });
+                await client.CreateDocumentCollectionIfNotExistsAsync(
+                    UriFactory.CreateDatabaseUri(options.DatabaseName),
+                    new DocumentCollection { Id = options.CollectionName });
+                return client;
+            });
+        }
+
+        public async Task Insert(TelemetryEntry telemetryEntry)
+        {
+            var client = await _clientFactory.Value;
+            await client.CreateDocumentAsync(_collectionUri, telemetryEntry);
+        }
+    }
+
+
     public class AsyncLazy<T> : Lazy<Task<T>>
     {
         public AsyncLazy(Func<Task<T>> valueFactory) : base(valueFactory)
