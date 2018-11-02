@@ -25,6 +25,20 @@ namespace DPF.Tests
 
         [Theory]
         [MemberData(nameof(TestCases))]
+        public void RecursiveTPLAll(ulong n, ulong expected)
+        {
+            _calc.RecursiveTPLAll(n).Should().Be(expected);
+        }
+
+        [Theory]
+        [MemberData(nameof(TestCases))]
+        public void RecursiveTPLStart(ulong n, ulong expected)
+        {
+            _calc.RecursiveTPLStart(n).Should().Be(expected);
+        }
+
+        [Theory]
+        [MemberData(nameof(TestCases))]
         public void Memo(ulong n, ulong expected)
         {
             _calc.RecursiveMemo(n).Should().Be(expected);

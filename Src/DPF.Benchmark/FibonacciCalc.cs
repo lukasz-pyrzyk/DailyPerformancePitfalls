@@ -18,15 +18,32 @@ namespace DPF.Benchmark
 
         [Benchmark]
         [ArgumentsSource(nameof(Data))]
-        public ulong RecursiveTpl(ulong n)
+        public ulong RecursiveTPLAll(ulong n)
         {
             if (n == 1 || n == 2) return 1;
-            var a = Task.Run(() => Recursive(n - 2));
-            var b = Task.Run(() => Recursive(n - 1));
+            var a = Task.Run(() => RecursiveTPLAll(n - 2));
+            var b = Task.Run(() => RecursiveTPLAll(n - 1));
             Task.WaitAll(a, b);
             return a.Result + b.Result;
         }
 
+        [Benchmark]
+        [ArgumentsSource(nameof(Data))]
+        public ulong RecursiveTPLStart(ulong n)
+        {
+            if (n == 1 || n == 2) return 1;
+            var a = Task.Run(() => RecursiveTPLStartImplementation(n - 2));
+            var b = Task.Run(() => RecursiveTPLStartImplementation(n - 1));
+            Task.WaitAll(a, b);
+            return a.Result + b.Result;
+        }
+
+        private ulong RecursiveTPLStartImplementation(ulong n)
+        {
+            if (n == 1 || n == 2) return 1;
+            return Recursive(n - 2) + Recursive(n - 1);
+        }
+        
         [Benchmark]
         [ArgumentsSource(nameof(Data))]
         public ulong RecursiveMemo(ulong n)
