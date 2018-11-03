@@ -1,4 +1,5 @@
 ﻿using System;
+using DPF.WebApp.Clients;
 using DPF.WebApp.Db;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -27,6 +28,11 @@ namespace DPF.WebApp
                 ApiKey = Environment.GetEnvironmentVariable("dpfapikey"),
                 Endpoint = new Uri(Environment.GetEnvironmentVariable("dpfurl"))
             };
+
+            services.AddHttpClient<StreamingClient>(x =>
+            {
+                x.BaseAddress = new Uri("https://github.com/");
+            });
 
             services.AddSingleton(dbOptions);
             services.AddSingleton<DataStorageService>();
