@@ -20,7 +20,7 @@ namespace DPF.WebApp.Controllers
         [HttpGet("buffering")]
         public async Task<IActionResult> WithBuffering()
         {
-            var request = new HttpRequestMessage(HttpMethod.Get, "dotnet/corefx/zip/v2.2.0-preview3");
+            var request = new HttpRequestMessage(HttpMethod.Get, "dotnet/corefx/archive/v2.2.0-preview3.zip");
 
             var response = await _client.Client.SendAsync(request);
 
@@ -32,7 +32,7 @@ namespace DPF.WebApp.Controllers
         [HttpGet("no-buffering")]
         public async Task<IActionResult> WithoutBuffering()
         {
-            var request = new HttpRequestMessage(HttpMethod.Get, "dotnet/corefx/zip/v2.2.0-preview3");
+            var request = new HttpRequestMessage(HttpMethod.Get, "dotnet/corefx/archive/v2.2.0-preview3.zip");
 
             var response = await _client.Client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead);
 
@@ -44,7 +44,7 @@ namespace DPF.WebApp.Controllers
         [HttpGet("stream")]
         public async Task<Stream> Stream()
         {
-            var request = new HttpRequestMessage(HttpMethod.Get, "dotnet/corefx/zip/v2.2.0-preview3");
+            var request = new HttpRequestMessage(HttpMethod.Get, "dotnet/corefx/archive/v2.2.0-preview3.zip");
 
             var response = await _client.Client.GetStreamAsync(request.RequestUri);
             return response;
@@ -54,7 +54,7 @@ namespace DPF.WebApp.Controllers
         [HttpGet("no-buffering-with-size")]
         public async Task<IActionResult> WithoutBufferingWithSize()
         {
-            var request = new HttpRequestMessage(HttpMethod.Get, "dotnet/corefx/zip/v2.2.0-preview3");
+            var request = new HttpRequestMessage(HttpMethod.Get, "dotnet/corefx/archive/v2.2.0-preview3.zip");
 
             var response = await _client.Client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead);
 
