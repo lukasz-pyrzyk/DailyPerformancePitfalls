@@ -1,1 +1,1 @@
- wrk -t1 -c10 -d30s http://localhost:5000/download/no-buffering
+ wrk -t1 -c1 -d30s http://localhost:5000/download/no-buffering
