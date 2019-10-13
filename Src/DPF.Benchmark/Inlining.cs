@@ -12,15 +12,15 @@ namespace DPF.Benchmark
         {
             public double Divide(double a, double b) => a / b;
 
-            public virtual double DivideVirtual(double a, double b) => a / b;
+            public double DivideVirtual(double a, double b) => a / b;
 
-            public virtual double DivideWithException(double a, double b)
+            public double DivideWithException(double a, double b)
             {
                 if (Math.Abs(b) < 0.001) throw new ArgumentException("B cannot be 0");
                 return a / b;
             }
 
-            public virtual double DivideWithExceptionHelper(double a, double b)
+            public double DivideWithExceptionHelper(double a, double b)
             {
                 if (Math.Abs(b) < 0.001) ThrowDivideByZeroException();
                 return a / b;
