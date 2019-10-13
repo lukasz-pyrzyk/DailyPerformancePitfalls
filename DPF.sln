@@ -1,18 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28010.2046
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29409.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DPF.Benchmark", "Src\DPF.Benchmark\DPF.Benchmark.csproj", "{89A0212A-1F1F-4E60-AED2-834020B86C9A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C14BC171-20F0-453B-9EBB-19915DEF2174}"
 	ProjectSection(SolutionItems) = preProject
+		Directory.Build.props = Directory.Build.props
 		readme.md = readme.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DPF.Tests", "Tests\DPF.Tests\DPF.Tests.csproj", "{966B759F-6C55-4F37-AE53-D813FD75E1E6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DPF.WebApp", "Src\DPF.WebApp\DPF.WebApp.csproj", "{3BD95466-11E1-4BED-9573-5773DF02CB52}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DPF.WebApp", "Src\DPF.WebApp\DPF.WebApp.csproj", "{3BD95466-11E1-4BED-9573-5773DF02CB52}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

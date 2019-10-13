@@ -11,6 +11,7 @@ namespace DPF.Benchmark
                 typeof(Swapping),
                 typeof(Inlining),
                 typeof(FibonacciCalc),
+                typeof(StringFormatting),
             }).Run(args);
         }
     }
