@@ -15,6 +15,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DPF.Tests", "Tests\DPF.Test
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DPF.WebApp", "Src\DPF.WebApp\DPF.WebApp.csproj", "{3BD95466-11E1-4BED-9573-5773DF02CB52}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DPF.ArrayPool", "Src\DPF.ArrayPool\DPF.ArrayPool.csproj", "{7C038CEF-4288-43C6-B242-E9EBC4603807}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DPF.EarlyRootCollection", "src\DPF.EarlyRootCollection\DPF.EarlyRootCollection.csproj", "{1E30F6B3-F8AB-4FEF-8F13-3ECB39A65BDE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{3BD95466-11E1-4BED-9573-5773DF02CB52}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3BD95466-11E1-4BED-9573-5773DF02CB52}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3BD95466-11E1-4BED-9573-5773DF02CB52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C038CEF-4288-43C6-B242-E9EBC4603807}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C038CEF-4288-43C6-B242-E9EBC4603807}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C038CEF-4288-43C6-B242-E9EBC4603807}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C038CEF-4288-43C6-B242-E9EBC4603807}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E30F6B3-F8AB-4FEF-8F13-3ECB39A65BDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E30F6B3-F8AB-4FEF-8F13-3ECB39A65BDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E30F6B3-F8AB-4FEF-8F13-3ECB39A65BDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E30F6B3-F8AB-4FEF-8F13-3ECB39A65BDE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
