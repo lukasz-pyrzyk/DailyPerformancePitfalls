@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace DPF.EarlyRootCollection
 {
@@ -10,7 +11,7 @@ namespace DPF.EarlyRootCollection
         /// Uncomment samples separately and run in: Debug, Release, Release with enabled TieredCompilation in csproj
         /// </summary>
         /// <param name="args"></param>
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             var timer = new Timer(x => Console.WriteLine(DateTime.UtcNow), null, 0, 100);
             Console.WriteLine("Timer started?");
@@ -23,10 +24,32 @@ namespace DPF.EarlyRootCollection
             //    Console.Read();
             //    GC.KeepAlive(timer);
 
-            //using var timer = new Timer(x => Console.WriteLine(DateTime.UtcNow), null, 0, 100);
+            //var timer = new Timer(x => Console.WriteLine(DateTime.UtcNow), null, 0, 100);
             //Console.WriteLine("Timer started?");
             //GC.Collect();
             //Console.Read();
+            //timer.Dispose();
+
+            //using (var timer = new Timer(x => Console.WriteLine(DateTime.UtcNow), null, 0, 100))
+            //{
+            //    GC.Collect();
+            //    GC.Collect();
+            //    Console.Read();
+            //}
+
+            //using (var timer = new Timer(x => Console.WriteLine(DateTime.UtcNow), null, 0, 100))
+            //{
+            //    GC.Collect();
+            //    GC.Collect();
+            //    Console.Read();
+            //}
+
+            //await using (var timer = new Timer(x => Console.WriteLine(DateTime.UtcNow), null, 0, 100))
+            //{
+            //    GC.Collect();
+            //    GC.Collect();
+            //    Console.Read();
+            //}
         }
     }
 }
