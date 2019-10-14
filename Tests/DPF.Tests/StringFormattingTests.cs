@@ -12,8 +12,8 @@ namespace DPF.Tests
             var bench = new StringFormatting();
             var a = bench.Default();
             var b = bench.StringBuilder();
-            var c = bench.StringBuilderWithFormat();
-            var d = bench.StringBuilderWithInitializedSize();
+            var c = bench.StringBuilderWithInitializedSize();
+            var d = bench.StringBuilderWithInitializedSizeAndFormat();
             var e = bench.CachedStringBuilderWithFormat();
 
             b.Length.Should().Be(a.Length);
