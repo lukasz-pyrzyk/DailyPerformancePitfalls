@@ -8,17 +8,19 @@ namespace DPF.ArrayPool
 {
     class Program
     {
+        private const int Iterations = 1000;
+
         public static async Task Main()
         {
             //await Default();
-            await SharedArrayPool();
-            // await OwnArrayPool();
+            // await SharedArrayPool();
+            await OwnArrayPool();
         }
 
         private static async Task Default()
         {
             var buffer = new byte[8 * 1024];
-            while (true)
+            for (int i = 0; i < Iterations; i++)
             {
                 foreach (var file in Directory.EnumerateFiles("images"))
                 {
@@ -36,7 +38,7 @@ namespace DPF.ArrayPool
             var buffer = arrayPool.Rent(8 * 1024);
             try
             {
-                while (true)
+                for (int i = 0; i < Iterations; i++)
                 {
                     foreach (var file in Directory.EnumerateFiles("images"))
                     {
@@ -68,7 +70,7 @@ namespace DPF.ArrayPool
             var buffer = arrayPool.Rent(8 * 1024);
             try
             {
-                while (true)
+                for (int i = 0; i < Iterations; i++)
                 {
                     foreach (var file in Directory.EnumerateFiles("images"))
                     {
@@ -94,12 +96,12 @@ namespace DPF.ArrayPool
 
         private static async ValueTask ReadStreamToArray(FileInfo fileInfo, FileStream stream, byte[] buffer, byte[] array)
         {
-            var read = 0;
-            while (read != fileInfo.Length)
+            var position = 0;
+            while (position != fileInfo.Length)
             {
                 int bytes = await stream.ReadAsync(buffer);
-                buffer.AsSpan(0, bytes).CopyTo(array.AsSpan(read));
-                read += bytes;
+                Array.Copy(buffer, 0, array, position, bytes);
+                position += bytes;
             }
         }
 
