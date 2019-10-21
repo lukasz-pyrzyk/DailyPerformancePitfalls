@@ -1,13 +1,13 @@
 ﻿using System;
-using DPF.WebApp.Clients;
-using DPF.WebApp.Db;
+using DPP.WebApp.Clients;
+using DPP.WebApp.Db;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace DPF.WebApp
+namespace DPP.WebApp
 {
     public class Startup
     {

@@ -2,7 +2,7 @@
 using BenchmarkDotNet.Diagnosers;
 using BenchmarkDotNet.Exporters;
 
-namespace DPF.Benchmark
+namespace DPP.Benchmark
 {
     public class DPFConfig : ManualConfig
     {

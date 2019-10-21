@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
-using DPF.WebApp.Models;
+using DPP.WebApp.Models;
 using Microsoft.Azure.Documents;
 using Microsoft.Azure.Documents.Client;
 
-namespace DPF.WebApp.Db
+namespace DPP.WebApp.Db
 {
     public class SlowDataStorageService
     {

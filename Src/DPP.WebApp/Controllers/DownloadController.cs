@@ -1,10 +1,10 @@
 ﻿using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
-using DPF.WebApp.Clients;
+using DPP.WebApp.Clients;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DPF.WebApp.Controllers
+namespace DPP.WebApp.Controllers
 {
     [Route("[controller]")]
     [ApiController]

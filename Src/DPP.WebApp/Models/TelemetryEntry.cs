@@ -1,7 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json;
 
-namespace DPF.WebApp.Models
+namespace DPP.WebApp.Models
 {
     public class TelemetryEntry
     {

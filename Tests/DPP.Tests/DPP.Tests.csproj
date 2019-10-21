@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Src\DPF.Benchmark\DPF.Benchmark.csproj" />
+    <ProjectReference Include="..\..\Src\DPF.Benchmark\DPP.Benchmark.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DPF.WebApp.Controllers
+namespace DPP.WebApp.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

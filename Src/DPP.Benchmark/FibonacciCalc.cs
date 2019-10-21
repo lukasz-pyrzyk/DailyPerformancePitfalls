@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using BenchmarkDotNet.Attributes;
 
-namespace DPF.Benchmark
+namespace DPP.Benchmark
 {
     [Config(typeof(DPFConfig))]
     [DisassemblyDiagnoser(printAsm: true)]

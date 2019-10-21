@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DPF.WebApp.Db
+namespace DPP.WebApp.Db
 {
     public class DataStorageServiceOptions
     {

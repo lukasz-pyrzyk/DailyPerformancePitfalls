@@ -1,6 +1,6 @@
 ﻿using System.Net.Http;
 
-namespace DPF.WebApp.Clients
+namespace DPP.WebApp.Clients
 {
     public class StreamingClient
     {

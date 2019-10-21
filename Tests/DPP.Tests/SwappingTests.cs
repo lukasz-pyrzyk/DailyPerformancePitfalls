@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using DPF.Benchmark;
+using DPP.Benchmark;
 using FluentAssertions;
 using Xunit;
 
-namespace DPF.Tests
+namespace DPP.Tests
 {
     public class SwappingTests
     {

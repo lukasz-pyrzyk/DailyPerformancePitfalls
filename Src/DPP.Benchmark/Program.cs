@@ -1,6 +1,6 @@
 ﻿using BenchmarkDotNet.Running;
 
-namespace DPF.Benchmark
+namespace DPP.Benchmark
 {
     class Program
     {

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 
-namespace DPF.WebApp
+namespace DPP.WebApp
 {
     public class Program
     {

@@ -3,7 +3,7 @@ using System.Buffers;
 using System.Text;
 using BenchmarkDotNet.Attributes;
 
-namespace DPF.Benchmark
+namespace DPP.Benchmark
 {
     [MemoryDiagnoser]
     public class StringFormatting
