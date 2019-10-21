@@ -8,11 +8,11 @@ namespace DPF.ArrayPool
 {
     class Program
     {
-        private const int Iterations = 1000;
+        private const int Iterations = 50;
 
         public static async Task Main()
         {
-            //await Default();
+            // await Default();
             // await SharedArrayPool();
             await OwnArrayPool();
         }
@@ -65,8 +65,8 @@ namespace DPF.ArrayPool
         private static async Task OwnArrayPool()
         {
             var biggestFile = Directory.GetFiles("images").Select(x => new FileInfo(x)).Select(x => x.Length).Max();
-
             var arrayPool = ArrayPool<byte>.Create(maxArrayLength: Convert.ToInt32(biggestFile), maxArraysPerBucket: 1);
+            
             var buffer = arrayPool.Rent(8 * 1024);
             try
             {
