@@ -7,6 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DPF.Benchmark", "Src\DPF.Be
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C14BC171-20F0-453B-9EBB-19915DEF2174}"
 	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
 		Directory.Build.props = Directory.Build.props
 		readme.md = readme.md
 	EndProjectSection
@@ -17,7 +18,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DPF.WebApp", "Src\DPF.WebAp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DPF.ArrayPool", "Src\DPF.ArrayPool\DPF.ArrayPool.csproj", "{7C038CEF-4288-43C6-B242-E9EBC4603807}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DPF.EarlyRootCollection", "src\DPF.EarlyRootCollection\DPF.EarlyRootCollection.csproj", "{1E30F6B3-F8AB-4FEF-8F13-3ECB39A65BDE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DPF.EarlyRootCollection", "src\DPF.EarlyRootCollection\DPF.EarlyRootCollection.csproj", "{1E30F6B3-F8AB-4FEF-8F13-3ECB39A65BDE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
