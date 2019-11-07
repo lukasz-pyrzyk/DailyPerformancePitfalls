@@ -29,6 +29,15 @@ namespace DPP.Benchmark
 
         [Benchmark]
         [ArgumentsSource(nameof(Data))]
+        public ulong WithIfStatement(ulong n)
+        {
+            if (n == 1 || n == 2) return 1;
+            const int goldenNumber = 18;
+            return n < goldenNumber ? Recursive(n) : RecursiveTPLStart(n);
+        }
+
+        [Benchmark]
+        [ArgumentsSource(nameof(Data))]
         public ulong RecursiveTPLStart(ulong n)
         {
             if (n == 1 || n == 2) return 1;
@@ -43,7 +52,7 @@ namespace DPP.Benchmark
             if (n == 1 || n == 2) return 1;
             return Recursive(n - 2) + Recursive(n - 1);
         }
-        
+
         [Benchmark]
         [ArgumentsSource(nameof(Data))]
         public ulong RecursiveMemo(ulong n)
