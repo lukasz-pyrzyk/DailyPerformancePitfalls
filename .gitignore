@@ -262,3 +262,5 @@ __pycache__/
 **/BenchmarkDotNet.Artifacts
 
 *.etl.zip
+
+DisasmoBin
